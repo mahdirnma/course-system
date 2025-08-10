@@ -13,6 +13,7 @@
                 <table class="w-full min-h-full border border-gray-400">
                     <thead>
                     <tr class="h-12 border border-gray-400 border-b-2 border-b-gray-400">
+                        <td class="text-center">setting</td>
                         <td class="text-center">media</td>
                         <td class="text-center">locations</td>
                         <td class="text-center">delete</td>
@@ -27,6 +28,12 @@
                     <tbody>
                     @foreach($events as $event)
                         <tr>
+                            <td class="text-center">
+                                <form action="{{--{{route('post.comments',compact('post'))}}--}}" method="get">
+                                    @csrf
+                                    <button type="submit" class="text-yellow-500 cursor-pointer">setting</button>
+                                </form>
+                            </td>
                             <td class="text-center">
                                 <form action="{{--{{route('post.comments',compact('post'))}}--}}" method="get">
                                     @csrf

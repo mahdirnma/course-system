@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Event;
 use App\Http\Requests\StoreEventRequest;
 use App\Http\Requests\UpdateEventRequest;
+use App\Models\Sponsor;
 
 class EventController extends Controller
 {
@@ -22,7 +23,8 @@ class EventController extends Controller
      */
     public function create()
     {
-        //
+        $sponsors = Sponsor::where('is_active',1)->get();
+        return view('admin.events.create',compact('sponsors'));
     }
 
     /**
@@ -30,7 +32,13 @@ class EventController extends Controller
      */
     public function store(StoreEventRequest $request)
     {
-        //
+        $event = Event::create($request->all());
+        $event->sponsors()->attach($request->sponsors);
+        $status=$event->setting()->create($request->all());
+        if($event && $status){
+            return redirect()->route('events.index');
+        }
+        return redirect()->back();
     }
 
     /**
