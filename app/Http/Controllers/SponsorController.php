@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Sponser;
-use App\Http\Requests\StoreSponserRequest;
-use App\Http\Requests\UpdateSponserRequest;
+use App\Models\Sponsor;
+use App\Http\Requests\StoreSponsorRequest;
+use App\Http\Requests\UpdateSponsorRequest;
 
-class SponserController extends Controller
+class SponsorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +27,7 @@ class SponserController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreSponserRequest $request)
+    public function store(StoreSponsorRequest $request)
     {
         //
     }
@@ -35,7 +35,7 @@ class SponserController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Sponser $sponser)
+    public function show(Sponsor $sponsor)
     {
         //
     }
@@ -43,7 +43,7 @@ class SponserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Sponser $sponser)
+    public function edit(Sponsor $sponsor)
     {
         //
     }
@@ -51,7 +51,7 @@ class SponserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateSponserRequest $request, Sponser $sponser)
+    public function update(UpdateSponsorRequest $request, Sponsor $sponsor)
     {
         //
     }
@@ -59,7 +59,7 @@ class SponserController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Sponser $sponser)
+    public function destroy(Sponsor $sponsor)
     {
         //
     }

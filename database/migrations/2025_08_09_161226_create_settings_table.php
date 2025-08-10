@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
+            $table->date('date');
+            $table->string('manager');
+            $table->string('level');
+            $table->integer('capacity');
+            $table->morphs('settingable');
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
     }

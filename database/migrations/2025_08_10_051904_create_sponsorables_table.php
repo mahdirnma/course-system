@@ -11,8 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('sponsers', function (Blueprint $table) {
+        Schema::create('sponsorables', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('sponsor_id')->constrained();
+            $table->morphs('sponsorable');
             $table->timestamps();
         });
     }
@@ -22,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('sponsers');
+        Schema::dropIfExists('sponsorables');
     }
 };

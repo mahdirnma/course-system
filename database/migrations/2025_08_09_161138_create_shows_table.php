@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('shows', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->text('details');
+            $table->integer('duration_minutes');
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
     }
