@@ -13,7 +13,8 @@ class EventController extends Controller
      */
     public function index()
     {
-        //
+        $events = Event::where('is_active',1)->paginate(2);
+        return view('admin.events.index',compact('events'));
     }
 
     /**
