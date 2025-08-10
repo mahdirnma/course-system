@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\SettingController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,6 +16,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/',[UserController::class,'index'])->name('dashboard');
 
     Route::resource('events',EventController::class);
+    Route::get('/events/{event}/setting',[SettingController::class,'eventSetting'])->name('events.setting');
 
     Route::post('logout',[AuthController::class,'logout'])->name('logout');
 });

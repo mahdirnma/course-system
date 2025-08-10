@@ -29,7 +29,7 @@
                     @foreach($events as $event)
                         <tr>
                             <td class="text-center">
-                                <form action="{{--{{route('post.comments',compact('post'))}}--}}" method="get">
+                                <form action="{{route('events.setting',compact('event'))}}" method="get">
                                     @csrf
                                     <button type="submit" class="text-yellow-500 cursor-pointer">setting</button>
                                 </form>
