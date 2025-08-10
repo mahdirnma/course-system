@@ -15,13 +15,12 @@ Route::middleware('guest')->group(function () {
 });
 Route::middleware('auth')->group(function () {
     Route::get('/',[UserController::class,'index'])->name('dashboard');
-    Route::prefix('events')->group(function () {
-        Route::resource('events',EventController::class);
-        Route::get('/events/{event}/setting',[SettingController::class,'eventSetting'])->name('events.setting');
-        Route::get('events/{event}/locations',[LocationController::class,'eventLocations'])->name('events.locations');
-        Route::get('events/{event}/locations/create',[LocationController::class,'eventLocationCreate'])->name('events.location.create');
-        Route::get('events/{event}/locations/store',[LocationController::class,'eventLocationStore'])->name('events.locations.store');
-    });
+
+    Route::resource('events',EventController::class);
+    Route::get('/events/{event}/setting',[SettingController::class,'eventSetting'])->name('events.setting');
+    Route::get('events/{event}/locations',[LocationController::class,'eventLocations'])->name('events.locations');
+    Route::get('events/{event}/locations/create',[LocationController::class,'eventLocationCreate'])->name('events.location.create');
+    Route::post('events/{event}/locations/store',[LocationController::class,'eventLocationStore'])->name('events.locations.store');
 
     Route::post('logout',[AuthController::class,'logout'])->name('logout');
 });

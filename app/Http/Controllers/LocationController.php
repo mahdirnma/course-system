@@ -16,52 +16,14 @@ class LocationController extends Controller
     {
         return view('admin.events.locations.index', compact('event'));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+    public function eventLocationCreate(Event $event){
+        return view('admin.events.locations.create', compact('event'));
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreLocationRequest $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Location $location)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Location $location)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateLocationRequest $request, Location $location)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Location $location)
-    {
-        //
+    public function eventLocationStore(StoreLocationRequest $request, Event $event){
+        $location=$event->locations()->create($request->all());
+        if($location){
+            return redirect()->route('events.locations',compact('event'));
+        }
+        return redirect()->route('events.location.create',compact('event'));
     }
 }
