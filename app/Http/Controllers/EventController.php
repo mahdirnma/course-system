@@ -82,6 +82,9 @@ class EventController extends Controller
      */
     public function destroy(Event $event)
     {
-        //
+        $event->setting()->update(['is_active'=>0]);
+        $event->sponsors()->detach();
+        $event->update(['is_active'=>0]);
+        return redirect()->route('events.index');
     }
 }
