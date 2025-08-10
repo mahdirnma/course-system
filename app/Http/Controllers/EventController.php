@@ -54,7 +54,8 @@ class EventController extends Controller
      */
     public function edit(Event $event)
     {
-        //
+        $sponsors=Sponsor::where('is_active',1)->get();
+        return view('admin.events.edit',compact('event','sponsors'));
     }
 
     /**
@@ -62,7 +63,18 @@ class EventController extends Controller
      */
     public function update(UpdateEventRequest $request, Event $event)
     {
-        //
+        $status=$event->update($request->all());
+        $status2=$event->setting()->update([
+            'data'=>$request->data,
+            'manager'=>$request->manager,
+            'level'=>$request->level,
+            'capacity'=>$request->capacity,
+        ]);
+        $event->sponsors()->sync($request->sponsors);
+        if($status && $status2){
+            return redirect()->route('events.index');
+        }
+        return redirect()->back();
     }
 
     /**

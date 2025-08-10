@@ -60,11 +60,9 @@
                                 </form>
                             </td>
                             <td class="text-center">
-{{--
-                                @foreach($post->tags as $tag)
-                                    {{$tag->title}},
+                                @foreach($event->sponsors as $sponsor)
+                                    {{$sponsor->name}},
                                 @endforeach
---}}
                             </td>
                             <td class="text-center">{{$event->date}}</td>
                             <td class="text-center">{{$event->owner}}</td>

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
-            $table->date('date');
+            $table->string('data');
             $table->string('manager');
             $table->string('level');
             $table->integer('capacity');
