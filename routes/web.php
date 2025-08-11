@@ -21,6 +21,8 @@ Route::middleware('auth')->group(function () {
     Route::get('events/{event}/locations',[LocationController::class,'eventLocations'])->name('events.locations');
     Route::get('events/{event}/locations/create',[LocationController::class,'eventLocationCreate'])->name('events.location.create');
     Route::post('events/{event}/locations/store',[LocationController::class,'eventLocationStore'])->name('events.locations.store');
+    Route::get('events/{event}/{location}/locations/edit',[LocationController::class,'eventLocationEdit'])->name('events.location.edit');
+    Route::put('events/{event}/{location}/locations/update',[LocationController::class,'eventLocationUpdate'])->name('events.locations.update');
 
     Route::post('logout',[AuthController::class,'logout'])->name('logout');
 });
