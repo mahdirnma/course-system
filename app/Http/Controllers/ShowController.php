@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Show;
 use App\Http\Requests\StoreShowRequest;
 use App\Http\Requests\UpdateShowRequest;
+use App\Models\Sponsor;
 
 class ShowController extends Controller
 {
@@ -22,7 +23,8 @@ class ShowController extends Controller
      */
     public function create()
     {
-        //
+        $sponsors = Sponsor::where('is_active',1)->get();
+        return view('admin.shows.create',compact('sponsors'));
     }
 
     /**
@@ -30,7 +32,14 @@ class ShowController extends Controller
      */
     public function store(StoreShowRequest $request)
     {
-        //
+        $show = Show::create($request->all());
+        $show->sponsors()->attach($request->sponsors);
+        $status=$show->setting()->create($request->all());
+        if($show && $status){
+            return redirect()->route('shows.index');
+        }
+        return redirect()->back();
+
     }
 
     /**
