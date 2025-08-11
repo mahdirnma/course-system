@@ -51,4 +51,14 @@ class MediaController extends Controller
     {
         return view('admin.courses.media.index', compact('course'));
     }
+    public function courseMediaCreate(Course $course){
+        return view('admin.courses.media.create', compact('course'));
+    }
+    public function courseMediaStore(Course $course, StoreMediaRequest $request){
+        $media=$course->media()->create($request->validated());
+        if($media){
+            return redirect()->route('courses.media',compact('course'));
+        }
+        return redirect()->route('courses.media.create',compact('course'));
+    }
 }
