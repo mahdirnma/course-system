@@ -70,6 +70,7 @@ class SponsorController extends Controller
      */
     public function destroy(Sponsor $sponsor)
     {
-        //
+        $sponsor->update(['is_active'=>0]);
+        return redirect()->route('sponsors.index');
     }
 }
