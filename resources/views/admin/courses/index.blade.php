@@ -19,8 +19,9 @@
                         <td class="text-center">delete</td>
                         <td class="text-center">update</td>
                         <td class="text-center">sponsors</td>
-                        <td class="text-center">date</td>
-                        <td class="text-center">owner</td>
+                        <td class="text-center">start</td>
+                        <td class="text-center">teacher</td>
+                        <td class="text-center">field</td>
                         <td class="text-center">description</td>
                         <td class="text-center">title</td>
                     </tr>
