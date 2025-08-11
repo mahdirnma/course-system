@@ -25,7 +25,7 @@
                         @if($media->is_active==1)
                             <tr>
                                 <td class="text-center">
-                                    <form action="{{--{{route('events.media.destroy',compact('event','media'))}}--}}" method="post">
+                                    <form action="{{route('events.media.destroy',compact('event','media'))}}" method="post">
                                         @csrf
                                         @method('delete')
                                         <button type="submit" class="text-green-600 cursor-pointer">delete</button>

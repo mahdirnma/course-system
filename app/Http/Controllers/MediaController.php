@@ -43,4 +43,8 @@ class MediaController extends Controller
         }
         return redirect()->route('events.media.edit',compact('event'));
     }
+    public function eventMediaDestroy(Event $event, Media $media){
+        $media->update(['is_active'=>0]);
+        return redirect()->route('events.media',compact('event'));
+    }
 }

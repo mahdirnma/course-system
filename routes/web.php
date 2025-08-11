@@ -33,6 +33,7 @@ Route::middleware('auth')->group(function () {
         Route::post('/{event}/media/store',[MediaController::class,'eventMediaStore'])->name('events.media.store');
         Route::get('/{event}/{media}/media/edit',[MediaController::class,'eventMediaEdit'])->name('events.media.edit');
         Route::put('/{event}/{media}/media/update',[MediaController::class,'eventMediaUpdate'])->name('events.media.update');
+        Route::delete('/{event}/{media}/media/destroy',[MediaController::class,'eventMediaDestroy'])->name('events.media.destroy');
     });
 
     Route::post('logout',[AuthController::class,'logout'])->name('logout');
