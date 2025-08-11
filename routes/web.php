@@ -38,6 +38,7 @@ Route::middleware('auth')->group(function () {
     });
     Route::prefix('courses')->group(function () {
         Route::resource('courses',CourseController::class);
+        Route::get('/{course}/setting',[SettingController::class,'courseSetting'])->name('courses.setting');
     });
     Route::post('logout',[AuthController::class,'logout'])->name('logout');
 });

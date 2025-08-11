@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use App\Models\Event;
 use App\Models\Setting;
 use App\Http\Requests\StoreSettingRequest;
@@ -17,51 +18,8 @@ class SettingController extends Controller
         return view('admin.events.settings.index',compact('event'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function courseSetting(Course $course)
     {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreSettingRequest $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Setting $setting)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Setting $setting)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateSettingRequest $request, Setting $setting)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Setting $setting)
-    {
-        //
+        return view('admin.courses.settings.index',compact('course'));
     }
 }

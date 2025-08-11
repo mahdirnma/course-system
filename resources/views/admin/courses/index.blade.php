@@ -30,7 +30,7 @@
                     @foreach($courses as $course)
                         <tr>
                             <td class="text-center">
-                                <form action="{{--{{route('events.setting',compact('event'))}}--}}" method="get">
+                                <form action="{{route('courses.setting',compact('course'))}}" method="get">
                                     @csrf
                                     <button type="submit" class="text-yellow-500 cursor-pointer">setting</button>
                                 </form>
