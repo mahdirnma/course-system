@@ -15,14 +15,16 @@ Route::middleware('guest')->group(function () {
 });
 Route::middleware('auth')->group(function () {
     Route::get('/',[UserController::class,'index'])->name('dashboard');
-
-    Route::resource('events',EventController::class);
-    Route::get('/events/{event}/setting',[SettingController::class,'eventSetting'])->name('events.setting');
-    Route::get('events/{event}/locations',[LocationController::class,'eventLocations'])->name('events.locations');
-    Route::get('events/{event}/locations/create',[LocationController::class,'eventLocationCreate'])->name('events.location.create');
-    Route::post('events/{event}/locations/store',[LocationController::class,'eventLocationStore'])->name('events.locations.store');
-    Route::get('events/{event}/{location}/locations/edit',[LocationController::class,'eventLocationEdit'])->name('events.location.edit');
-    Route::put('events/{event}/{location}/locations/update',[LocationController::class,'eventLocationUpdate'])->name('events.locations.update');
+    Route::prefix('events')->group(function () {
+        Route::resource('events',EventController::class);
+        Route::get('/{event}/setting',[SettingController::class,'eventSetting'])->name('events.setting');
+        Route::get('/{event}/locations',[LocationController::class,'eventLocations'])->name('events.locations');
+        Route::get('/{event}/locations/create',[LocationController::class,'eventLocationCreate'])->name('events.location.create');
+        Route::post('/{event}/locations/store',[LocationController::class,'eventLocationStore'])->name('events.locations.store');
+        Route::get('/{event}/{location}/locations/edit',[LocationController::class,'eventLocationEdit'])->name('events.location.edit');
+        Route::put('/{event}/{location}/locations/update',[LocationController::class,'eventLocationUpdate'])->name('events.locations.update');
+        Route::delete('/{event}/{location}/locations/destroy',[LocationController::class,'eventLocationDestroy'])->name('events.locations.destroy');
+    });
 
     Route::post('logout',[AuthController::class,'logout'])->name('logout');
 });

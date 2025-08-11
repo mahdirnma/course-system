@@ -39,4 +39,8 @@ class LocationController extends Controller
         }
         return redirect()->route('events.location.edit',compact('event','location'));
     }
+    public function eventLocationDestroy(Event $event, Location $location){
+        $location->update(['is_active'=>0]);
+        return redirect()->route('events.locations',compact('event'));
+    }
 }

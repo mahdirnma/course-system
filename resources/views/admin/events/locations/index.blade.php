@@ -22,24 +22,26 @@
                     </thead>
                     <tbody>
                     @foreach($event->locations as $location)
-                        <tr>
-                            <td class="text-center">
-                                <form action="{{route('events.destroy',compact('event'))}}" method="post">
-                                    @csrf
-                                    @method('delete')
-                                    <button type="submit" class="text-green-600 cursor-pointer">delete</button>
-                                </form>
-                            </td>
-                            <td class="text-center">
-                                <form action="{{route('events.location.edit',compact('event','location'))}}" method="get">
-                                    @csrf
-                                    <button type="submit" class="text-cyan-600 cursor-pointer">update</button>
-                                </form>
-                            </td>
-                            <td class="text-center">{{$location->city}}</td>
-                            <td class="text-center">{{$location->address}}</td>
-                            <td class="text-center">{{$location->title}}</td>
-                        </tr>
+                        @if($location->is_active==1)
+                            <tr>
+                                <td class="text-center">
+                                    <form action="{{route('events.locations.destroy',compact('event','location'))}}" method="post">
+                                        @csrf
+                                        @method('delete')
+                                        <button type="submit" class="text-green-600 cursor-pointer">delete</button>
+                                    </form>
+                                </td>
+                                <td class="text-center">
+                                    <form action="{{route('events.location.edit',compact('event','location'))}}" method="get">
+                                        @csrf
+                                        <button type="submit" class="text-cyan-600 cursor-pointer">update</button>
+                                    </form>
+                                </td>
+                                <td class="text-center">{{$location->city}}</td>
+                                <td class="text-center">{{$location->address}}</td>
+                                <td class="text-center">{{$location->title}}</td>
+                            </tr>
+                        @endif
                     @endforeach
                     </tbody>
                 </table>
