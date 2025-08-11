@@ -82,6 +82,9 @@ class CourseController extends Controller
      */
     public function destroy(Course $course)
     {
-        //
+        $course->sponsors()->detach();
+        $course->setting()->update(['is_active'=>0]);
+        $course->update(['is_active'=>0]);
+        return redirect()->route('courses.index');
     }
 }
