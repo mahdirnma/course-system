@@ -54,7 +54,8 @@ class CourseController extends Controller
      */
     public function edit(Course $course)
     {
-        //
+        $sponsors=Sponsor::where('is_active',1)->get();
+        return view('admin.courses.edit',compact('course','sponsors'));
     }
 
     /**
@@ -62,7 +63,18 @@ class CourseController extends Controller
      */
     public function update(UpdateCourseRequest $request, Course $course)
     {
-        //
+        $status=$course->update($request->all());
+        $course->sponsors()->sync($request->sponsors);
+        $status2=$course->setting()->update([
+            'data'=>$request->data,
+            'manager'=>$request->manager,
+            'level'=>$request->level,
+            'capacity'=>$request->capacity,
+        ]);
+        if($status && $status2){
+            return redirect()->route('courses.index');
+        }
+        return redirect()->back();
     }
 
     /**
