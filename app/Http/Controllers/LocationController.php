@@ -84,4 +84,14 @@ class LocationController extends Controller
     {
         return view('admin.shows.locations.index', compact('show'));
     }
+    public function showLocationCreate(Show $show){
+        return view('admin.shows.locations.create', compact('show'));
+    }
+    public function showLocationStore(StoreLocationRequest $request, Show $show){
+        $location=$show->locations()->create($request->all());
+        if($location){
+            return redirect()->route('shows.locations',compact('show'));
+        }
+        return redirect()->route('shows.location.create',compact('show'));
+    }
 }
