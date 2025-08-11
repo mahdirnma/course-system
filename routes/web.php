@@ -6,6 +6,7 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\SettingController;
+use App\Http\Controllers\ShowController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -55,6 +56,9 @@ Route::middleware('auth')->group(function () {
         Route::put('/{course}/{media}/media/update',[MediaController::class,'courseMediaUpdate'])->name('courses.media.update');
         Route::delete('/{course}/{media}/media/destroy',[MediaController::class,'courseMediaDestroy'])->name('courses.media.destroy');
 
+    });
+    Route::prefix('shows')->group(function () {
+        Route::resource('shows',ShowController::class);
     });
     Route::post('logout',[AuthController::class,'logout'])->name('logout');
 });

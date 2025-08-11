@@ -13,7 +13,8 @@ class ShowController extends Controller
      */
     public function index()
     {
-        //
+        $shows = Show::where('is_active',1)->paginate(2);
+        return view('admin.shows.index',compact('shows'));
     }
 
     /**
