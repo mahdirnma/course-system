@@ -20,10 +20,10 @@
                     </thead>
                     <tbody>
                     <tr>
-                            <td class="text-center">{{$course->setting->capacity}}</td>
-                            <td class="text-center">{{$course->setting->level}}</td>
-                            <td class="text-center">{{$course->setting->manager}}</td>
-                            <td class="text-center">{{$course->setting->data}}</td>
+                        <td class="text-center">{{$course->setting->capacity}}</td>
+                        <td class="text-center">{{$course->setting->level}}</td>
+                        <td class="text-center">{{$course->setting->manager}}</td>
+                        <td class="text-center">{{$course->setting->data}}</td>
                     </tr>
                     </tbody>
                 </table>

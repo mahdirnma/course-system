@@ -42,7 +42,7 @@
                                 </form>
                             </td>
                             <td class="text-center">
-                                <form action="{{--{{route('events.locations',compact('event'))}}--}}" method="get">
+                                <form action="{{route('courses.locations',compact('course'))}}" method="get">
                                     @csrf
                                     <button type="submit" class="text-blue-700 cursor-pointer">locations</button>
                                 </form>

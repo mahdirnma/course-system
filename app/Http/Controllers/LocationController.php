@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use App\Models\Event;
 use App\Models\Location;
 use App\Http\Requests\StoreLocationRequest;
@@ -11,7 +12,7 @@ use Illuminate\Http\Client\Request;
 class LocationController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Event Location processes.
      */
     public function eventLocations(Event $event)
     {
@@ -43,4 +44,14 @@ class LocationController extends Controller
         $location->update(['is_active'=>0]);
         return redirect()->route('events.locations',compact('event'));
     }
+
+    /**
+     * Course Location processes.
+     */
+
+    public function courseLocations(Course $course)
+    {
+        return view('admin.courses.locations.index', compact('course'));
+    }
+
 }

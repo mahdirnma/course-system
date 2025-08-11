@@ -38,7 +38,16 @@ Route::middleware('auth')->group(function () {
     });
     Route::prefix('courses')->group(function () {
         Route::resource('courses',CourseController::class);
+
         Route::get('/{course}/setting',[SettingController::class,'courseSetting'])->name('courses.setting');
+
+        Route::get('/{course}/locations',[LocationController::class,'courseLocations'])->name('courses.locations');
+        Route::get('/{course}/locations/create',[LocationController::class,'courseLocationCreate'])->name('courses.location.create');
+        Route::post('/{course}/locations/store',[LocationController::class,'courseLocationStore'])->name('courses.locations.store');
+        Route::get('/{course}/{location}/locations/edit',[LocationController::class,'courseLocationEdit'])->name('courses.location.edit');
+        Route::put('/{course}/{location}/locations/update',[LocationController::class,'courseLocationUpdate'])->name('courses.locations.update');
+        Route::delete('/{course}/{location}/locations/destroy',[LocationController::class,'courseLocationDestroy'])->name('courses.locations.destroy');
+
     });
     Route::post('logout',[AuthController::class,'logout'])->name('logout');
 });
