@@ -48,10 +48,18 @@ class LocationController extends Controller
     /**
      * Course Location processes.
      */
-
     public function courseLocations(Course $course)
     {
         return view('admin.courses.locations.index', compact('course'));
     }
-
+    public function courseLocationCreate(Course $course){
+        return view('admin.courses.locations.create', compact('course'));
+    }
+    public function courseLocationStore(StoreLocationRequest $request, Course $course){
+        $location=$course->locations()->create($request->all());
+        if($location){
+            return redirect()->route('courses.locations',compact('course'));
+        }
+        return redirect()->route('courses.location.create',compact('course'));
+    }
 }
