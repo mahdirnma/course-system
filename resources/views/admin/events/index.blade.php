@@ -35,7 +35,7 @@
                                 </form>
                             </td>
                             <td class="text-center">
-                                <form action="{{--{{route('post.comments',compact('post'))}}--}}" method="get">
+                                <form action="{{route('events.media',compact('event'))}}" method="get">
                                     @csrf
                                     <button type="submit" class="text-red-800 cursor-pointer">media</button>
                                 </form>
