@@ -71,4 +71,8 @@ class MediaController extends Controller
         }
         return redirect()->route('courses.media.edit',compact('course','media'));
     }
+    public function courseMediaDestroy(Course $course, Media $media){
+        $media->update(['is_active'=>0]);
+        return redirect()->route('courses.media',compact('course'));
+    }
 }
