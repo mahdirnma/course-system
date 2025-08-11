@@ -84,4 +84,14 @@ class MediaController extends Controller
         return view('admin.shows.media.index', compact('show'));
     }
 
+    public function showMediaCreate(Show $show){
+        return view('admin.shows.media.create', compact('show'));
+    }
+    public function showMediaStore(Show $show, StoreMediaRequest $request){
+        $media=$show->media()->create($request->validated());
+        if($media){
+            return redirect()->route('shows.media',compact('show'));
+        }
+        return redirect()->route('shows.media.create',compact('show'));
+    }
 }
