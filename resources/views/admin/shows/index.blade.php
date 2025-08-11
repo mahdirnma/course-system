@@ -34,7 +34,7 @@
                                 </form>
                             </td>
                             <td class="text-center">
-                                <form action="{{--{{route('shows.media',compact('show'))}}--}}" method="get">
+                                <form action="{{route('shows.media',compact('show'))}}" method="get">
                                     @csrf
                                     <button type="submit" class="text-red-800 cursor-pointer">media</button>
                                 </form>

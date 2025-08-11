@@ -7,6 +7,7 @@ use App\Models\Event;
 use App\Models\Media;
 use App\Http\Requests\StoreMediaRequest;
 use App\Http\Requests\UpdateMediaRequest;
+use App\Models\Show;
 
 class MediaController extends Controller
 {
@@ -75,4 +76,12 @@ class MediaController extends Controller
         $media->update(['is_active'=>0]);
         return redirect()->route('courses.media',compact('course'));
     }
+    /**
+     * show Media processes.
+     */
+    public function showMedia(Show $show)
+    {
+        return view('admin.shows.media.index', compact('show'));
+    }
+
 }

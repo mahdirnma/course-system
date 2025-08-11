@@ -69,6 +69,13 @@ Route::middleware('auth')->group(function () {
         Route::put('/{show}/{location}/locations/update',[LocationController::class,'showLocationUpdate'])->name('shows.locations.update');
         Route::delete('/{show}/{location}/locations/destroy',[LocationController::class,'showLocationDestroy'])->name('shows.locations.destroy');
 
+        Route::get('/{show}/media',[MediaController::class,'showMedia'])->name('shows.media');
+        Route::get('/{show}/media/create',[MediaController::class,'showMediaCreate'])->name('shows.media.create');
+        Route::post('/{show}/media/store',[MediaController::class,'showMediaStore'])->name('shows.media.store');
+        Route::get('/{show}/{media}/media/edit',[MediaController::class,'showMediaEdit'])->name('shows.media.edit');
+        Route::put('/{show}/{media}/media/update',[MediaController::class,'showMediaUpdate'])->name('shows.media.update');
+        Route::delete('/{show}/{media}/media/destroy',[MediaController::class,'showMediaDestroy'])->name('shows.media.destroy');
+
     });
     Route::post('logout',[AuthController::class,'logout'])->name('logout');
 });
