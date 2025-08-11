@@ -94,4 +94,14 @@ class MediaController extends Controller
         }
         return redirect()->route('shows.media.create',compact('show'));
     }
+    public function showMediaEdit(Show $show, Media $media){
+        return view('admin.shows.media.edit', compact('show','media'));
+    }
+    public function showMediaUpdate(Show $show, UpdateMediaRequest $request, Media $media){
+        $status=$media->update($request->validated());
+        if($status){
+            return redirect()->route('shows.media',compact('show'));
+        }
+        return redirect()->route('shows.media.edit',compact('show','media'));
+    }
 }
