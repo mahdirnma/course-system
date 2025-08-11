@@ -72,4 +72,8 @@ class LocationController extends Controller
         }
         return redirect()->route('courses.location.edit',compact('course','location'));
     }
+    public function courseLocationDestroy(Course $course, Location $location){
+        $location->update(['is_active'=>0]);
+        return redirect()->route('courses.locations',compact('course'));
+    }
 }
