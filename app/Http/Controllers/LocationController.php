@@ -62,4 +62,14 @@ class LocationController extends Controller
         }
         return redirect()->route('courses.location.create',compact('course'));
     }
+    public function courseLocationEdit(Course $course,Location $location){
+        return view('admin.courses.locations.edit', compact('course','location'));
+    }
+    public function courseLocationUpdate(UpdateLocationRequest $request, Course $course, Location $location){
+        $status=$location->update($request->all());
+        if($status){
+            return redirect()->route('courses.locations',compact('course'));
+        }
+        return redirect()->route('courses.location.edit',compact('course','location'));
+    }
 }
