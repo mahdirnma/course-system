@@ -61,4 +61,14 @@ class MediaController extends Controller
         }
         return redirect()->route('courses.media.create',compact('course'));
     }
+    public function courseMediaEdit(Course $course, Media $media){
+        return view('admin.courses.media.edit', compact('course','media'));
+    }
+    public function courseMediaUpdate(Course $course, UpdateMediaRequest $request, Media $media){
+        $status=$media->update($request->validated());
+        if($status){
+            return redirect()->route('courses.media',compact('course'));
+        }
+        return redirect()->route('courses.media.edit',compact('course','media'));
+    }
 }
