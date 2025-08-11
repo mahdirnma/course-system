@@ -29,7 +29,8 @@ Route::middleware('auth')->group(function () {
         Route::delete('/{event}/{location}/locations/destroy',[LocationController::class,'eventLocationDestroy'])->name('events.locations.destroy');
 
         Route::get('/{event}/media',[MediaController::class,'eventMedia'])->name('events.media');
-
+        Route::get('/{event}/media/create',[MediaController::class,'eventMediaCreate'])->name('events.media.create');
+        Route::post('/{event}/media/store',[MediaController::class,'eventMediaStore'])->name('events.media.store');
     });
 
     Route::post('logout',[AuthController::class,'logout'])->name('logout');
