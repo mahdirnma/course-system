@@ -32,4 +32,15 @@ class MediaController extends Controller
         return redirect()->route('events.media.create',compact('event'));
     }
 
+    public function eventMediaEdit(Event $event, Media $media)
+    {
+        return view('admin.events.media.edit', compact('event','media'));
+    }
+    public function eventMediaUpdate(Event $event, UpdateMediaRequest $request, Media $media){
+        $status=$media->update($request->validated());
+        if($status){
+            return redirect()->route('events.media',compact('event'));
+        }
+        return redirect()->route('events.media.edit',compact('event'));
+    }
 }

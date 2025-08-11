@@ -32,7 +32,7 @@
                                     </form>
                                 </td>
                                 <td class="text-center">
-                                    <form action="{{--{{route('events.media.edit',compact('event','media'))}}--}}" method="get">
+                                    <form action="{{route('events.media.edit',compact('event','media'))}}" method="get">
                                         @csrf
                                         <button type="submit" class="text-cyan-600 cursor-pointer">update</button>
                                     </form>

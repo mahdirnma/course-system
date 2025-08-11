@@ -31,6 +31,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/{event}/media',[MediaController::class,'eventMedia'])->name('events.media');
         Route::get('/{event}/media/create',[MediaController::class,'eventMediaCreate'])->name('events.media.create');
         Route::post('/{event}/media/store',[MediaController::class,'eventMediaStore'])->name('events.media.store');
+        Route::get('/{event}/{media}/media/edit',[MediaController::class,'eventMediaEdit'])->name('events.media.edit');
+        Route::put('/{event}/{media}/media/update',[MediaController::class,'eventMediaUpdate'])->name('events.media.update');
     });
 
     Route::post('logout',[AuthController::class,'logout'])->name('logout');
