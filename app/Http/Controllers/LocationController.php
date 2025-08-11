@@ -104,4 +104,8 @@ class LocationController extends Controller
         }
         return redirect()->route('shows.location.edit',compact('show','location'));
     }
+    public function showLocationDestroy(Show $show, Location $location){
+        $location->update(['is_active'=>0]);
+        return redirect()->route('shows.locations',compact('show'));
+    }
 }
