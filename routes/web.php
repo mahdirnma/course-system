@@ -7,6 +7,7 @@ use App\Http\Controllers\LocationController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\ShowController;
+use App\Http\Controllers\SponsorController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -77,5 +78,6 @@ Route::middleware('auth')->group(function () {
         Route::delete('/{show}/{media}/media/destroy',[MediaController::class,'showMediaDestroy'])->name('shows.media.destroy');
 
     });
+    Route::resource('sponsors',SponsorController::class);
     Route::post('logout',[AuthController::class,'logout'])->name('logout');
 });

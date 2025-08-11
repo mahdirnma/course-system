@@ -13,7 +13,8 @@ class SponsorController extends Controller
      */
     public function index()
     {
-        //
+        $sponsors = Sponsor::where('is_active',1)->paginate(2);
+        return view('admin.sponsors.index',compact('sponsors'));
     }
 
     /**
