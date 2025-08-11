@@ -59,6 +59,9 @@ Route::middleware('auth')->group(function () {
     });
     Route::prefix('shows')->group(function () {
         Route::resource('shows',ShowController::class);
+
+        Route::get('/{show}/setting',[SettingController::class,'showSetting'])->name('shows.setting');
+
     });
     Route::post('logout',[AuthController::class,'logout'])->name('logout');
 });

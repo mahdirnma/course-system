@@ -28,7 +28,7 @@
                     @foreach($shows as $show)
                         <tr>
                             <td class="text-center">
-                                <form action="{{--{{route('shows.setting',compact('show'))}}--}}" method="get">
+                                <form action="{{route('shows.setting',compact('show'))}}" method="get">
                                     @csrf
                                     <button type="submit" class="text-yellow-500 cursor-pointer">setting</button>
                                 </form>
