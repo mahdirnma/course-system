@@ -55,7 +55,8 @@ class ShowController extends Controller
      */
     public function edit(Show $show)
     {
-        //
+        $sponsors = Sponsor::where('is_active',1)->get();
+        return view('admin.shows.edit',compact('show','sponsors'));
     }
 
     /**
@@ -63,7 +64,18 @@ class ShowController extends Controller
      */
     public function update(UpdateShowRequest $request, Show $show)
     {
-        //
+        $status=$show->update($request->all());
+        $status2=$show->setting()->update([
+            'data'=>$request->data,
+            'manager'=>$request->manager,
+            'level'=>$request->level,
+            'capacity'=>$request->capacity,
+        ]);
+        $show->sponsors()->sync($request->sponsors);
+        if($status && $status2){
+            return redirect()->route('shows.index');
+        }
+        return redirect()->back();
     }
 
     /**
