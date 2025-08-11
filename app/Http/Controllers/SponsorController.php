@@ -22,7 +22,7 @@ class SponsorController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.sponsors.create');
     }
 
     /**
@@ -30,7 +30,11 @@ class SponsorController extends Controller
      */
     public function store(StoreSponsorRequest $request)
     {
-        //
+        $sponsor=Sponsor::create($request->all());
+        if($sponsor){
+            return redirect()->route('sponsors.index');
+        }
+        return redirect()->back();
     }
 
     /**
