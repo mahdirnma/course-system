@@ -48,6 +48,13 @@ Route::middleware('auth')->group(function () {
         Route::put('/{course}/{location}/locations/update',[LocationController::class,'courseLocationUpdate'])->name('courses.locations.update');
         Route::delete('/{course}/{location}/locations/destroy',[LocationController::class,'courseLocationDestroy'])->name('courses.locations.destroy');
 
+        Route::get('/{course}/media',[MediaController::class,'courseMedia'])->name('courses.media');
+        Route::get('/{course}/media/create',[MediaController::class,'courseMediaCreate'])->name('courses.media.create');
+        Route::post('/{course}/media/store',[MediaController::class,'courseMediaStore'])->name('courses.media.store');
+        Route::get('/{course}/{media}/media/edit',[MediaController::class,'courseMediaEdit'])->name('courses.media.edit');
+        Route::put('/{course}/{media}/media/update',[MediaController::class,'courseMediaUpdate'])->name('courses.media.update');
+        Route::delete('/{course}/{media}/media/destroy',[MediaController::class,'courseMediaDestroy'])->name('courses.media.destroy');
+
     });
     Route::post('logout',[AuthController::class,'logout'])->name('logout');
 });

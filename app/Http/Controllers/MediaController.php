@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use App\Models\Event;
 use App\Models\Media;
 use App\Http\Requests\StoreMediaRequest;
@@ -10,16 +11,12 @@ use App\Http\Requests\UpdateMediaRequest;
 class MediaController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Event Media processes.
      */
     public function eventMedia(Event $event)
     {
         return view('admin.events.media.index', compact('event'));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
     public function eventMediaCreate(Event $event)
     {
         return view('admin.events.media.create', compact('event'));
@@ -46,5 +43,12 @@ class MediaController extends Controller
     public function eventMediaDestroy(Event $event, Media $media){
         $media->update(['is_active'=>0]);
         return redirect()->route('events.media',compact('event'));
+    }
+    /**
+     * Course Media processes.
+     */
+    public function courseMedia(Course $course)
+    {
+        return view('admin.courses.media.index', compact('course'));
     }
 }
