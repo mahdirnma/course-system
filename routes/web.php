@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\MediaController;
@@ -35,6 +36,8 @@ Route::middleware('auth')->group(function () {
         Route::put('/{event}/{media}/media/update',[MediaController::class,'eventMediaUpdate'])->name('events.media.update');
         Route::delete('/{event}/{media}/media/destroy',[MediaController::class,'eventMediaDestroy'])->name('events.media.destroy');
     });
-
+    Route::prefix('courses')->group(function () {
+        Route::resource('courses',CourseController::class);
+    });
     Route::post('logout',[AuthController::class,'logout'])->name('logout');
 });

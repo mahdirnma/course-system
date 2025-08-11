@@ -16,7 +16,7 @@
             <nav>
                 <ul class="flex flex-row-reverse">
                     <li class="w-44 h-full flex justify-center items-center font-mono text-balance"><a href="{{route('events.index')}}">events</a></li>
-                    <li class="w-44 h-full flex justify-center items-center font-mono text-balance"><a href="{{--{{route('products.index')}}--}}">courses</a></li>
+                    <li class="w-44 h-full flex justify-center items-center font-mono text-balance"><a href="{{route('courses.index')}}">courses</a></li>
                     <li class="w-44 h-full flex justify-center items-center font-mono text-balance"><a href="{{--{{route('videos.index')}}--}}">shows</a></li>
                     <li class="w-44 h-full flex justify-center items-center font-mono text-balance"><a href="{{--{{route('tags.index')}}--}}">sponsors</a></li>
                 </ul>
