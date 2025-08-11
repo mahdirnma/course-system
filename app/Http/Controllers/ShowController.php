@@ -83,6 +83,9 @@ class ShowController extends Controller
      */
     public function destroy(Show $show)
     {
-        //
+        $show->setting()->update(['is_active'=>0]);
+        $show->sponsors()->detach();
+        $show->update(['is_active'=>0]);
+        return redirect()->route('shows.index');
     }
 }
