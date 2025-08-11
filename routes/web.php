@@ -62,6 +62,13 @@ Route::middleware('auth')->group(function () {
 
         Route::get('/{show}/setting',[SettingController::class,'showSetting'])->name('shows.setting');
 
+        Route::get('/{show}/locations',[LocationController::class,'showLocations'])->name('shows.locations');
+        Route::get('/{show}/locations/create',[LocationController::class,'showLocationCreate'])->name('shows.location.create');
+        Route::post('/{show}/locations/store',[LocationController::class,'showLocationStore'])->name('shows.locations.store');
+        Route::get('/{show}/{location}/locations/edit',[LocationController::class,'showLocationEdit'])->name('shows.location.edit');
+        Route::put('/{show}/{location}/locations/update',[LocationController::class,'showLocationUpdate'])->name('shows.locations.update');
+        Route::delete('/{show}/{location}/locations/destroy',[LocationController::class,'showLocationDestroy'])->name('shows.locations.destroy');
+
     });
     Route::post('logout',[AuthController::class,'logout'])->name('logout');
 });

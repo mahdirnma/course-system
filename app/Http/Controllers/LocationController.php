@@ -7,6 +7,7 @@ use App\Models\Event;
 use App\Models\Location;
 use App\Http\Requests\StoreLocationRequest;
 use App\Http\Requests\UpdateLocationRequest;
+use App\Models\Show;
 use Illuminate\Http\Client\Request;
 
 class LocationController extends Controller
@@ -75,5 +76,12 @@ class LocationController extends Controller
     public function courseLocationDestroy(Course $course, Location $location){
         $location->update(['is_active'=>0]);
         return redirect()->route('courses.locations',compact('course'));
+    }
+    /**
+     * show Location processes.
+     */
+    public function showLocations(Show $show)
+    {
+        return view('admin.shows.locations.index', compact('show'));
     }
 }
