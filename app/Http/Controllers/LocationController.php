@@ -94,4 +94,14 @@ class LocationController extends Controller
         }
         return redirect()->route('shows.location.create',compact('show'));
     }
+    public function showLocationEdit(Show $show,Location $location){
+        return view('admin.shows.locations.edit', compact('show','location'));
+    }
+    public function showLocationUpdate(UpdateLocationRequest $request, Show $show, Location $location){
+        $status=$location->update($request->all());
+        if($status){
+            return redirect()->route('shows.locations',compact('show'));
+        }
+        return redirect()->route('shows.location.edit',compact('show','location'));
+    }
 }
