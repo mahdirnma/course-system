@@ -97,11 +97,16 @@ class MediaController extends Controller
     public function showMediaEdit(Show $show, Media $media){
         return view('admin.shows.media.edit', compact('show','media'));
     }
-    public function showMediaUpdate(Show $show, UpdateMediaRequest $request, Media $media){
-        $status=$media->update($request->validated());
-        if($status){
-            return redirect()->route('shows.media',compact('show'));
+    public function showMediaUpdate(Show $show, UpdateMediaRequest $request, Media $media)
+    {
+        $status = $media->update($request->validated());
+        if ($status) {
+            return redirect()->route('shows.media', compact('show'));
         }
-        return redirect()->route('shows.media.edit',compact('show','media'));
+        return redirect()->route('shows.media.edit', compact('show', 'media'));
+    }
+    public function showMediaDestroy(Show $show, Media $media){
+        $media->update(['is_active'=>0]);
+        return redirect()->route('shows.media',compact('show'));
     }
 }
